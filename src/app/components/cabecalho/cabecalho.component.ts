@@ -19,4 +19,8 @@ export class CabecalhoComponent {
       this.mensagem = "Boa noite";
     }
   }
+
+  reloadPage() {
+    window.location.reload();
+  }
 }

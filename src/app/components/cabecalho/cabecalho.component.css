@@ -9,6 +9,7 @@ h1 {
     margin-left: 4%;
     font-family: 'Futura BD BT', Arial, sans-serif;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .gradiente-texto {
