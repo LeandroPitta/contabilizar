@@ -3,7 +3,7 @@
         <!-- Campo de Data Efetiva - está desativado para edição -->
         <mat-form-field appearance="outline" id="DataEfetiva">
             <mat-label>Data Efetiva</mat-label>
-            <input matInput type="text" [(ngModel)]="lancamento.DataEfetiva" name="DataEfetiva" disabled="true">
+            <input matInput type="text" [(ngModel)]="lancamento.dataEfetiva" name="DataEfetiva" disabled="true">
         </mat-form-field>
         <!-- Campo de Débito com formatação de moeda - está desativado para edição -->
         <mat-form-field appearance="outline" id="Debito">
@@ -20,7 +20,7 @@
         <!-- Campo de seleção de Status -->
         <mat-form-field appearance="outline">
             <mat-label>Status</mat-label>
-            <mat-select [(ngModel)]="lancamento.Status" name="Status">
+            <mat-select [(ngModel)]="lancamento.status" name="Status">
                 <mat-option *ngFor="let status of status" [value]="status.value">
                     {{status.viewValue}}
                 </mat-option>
@@ -29,7 +29,7 @@
         <!-- Campo de seleção de Último Status com datepicker -->
         <mat-form-field appearance="outline" id="UltimoStatus" (click)="picker.open()">
             <mat-label>Último Status</mat-label>
-            <input matInput [(ngModel)]="lancamento.UltimoStatus" [matDatepicker]="picker" name="ultimo-status"
+            <input matInput [(ngModel)]="lancamento.ultimoStatus" [matDatepicker]="picker" name="ultimo-status"
                 (focus)="picker.open()" readonly>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>

@@ -21,6 +21,11 @@ export class EditarComponent implements OnInit {
   debito: number = 0;
   credito: number = 0;
   id: number = +this.route.snapshot.paramMap.get('id')!;
+  status: Status[] = [
+    { value: 'Pendente', viewValue: 'Pendente' },
+    { value: 'Em tratamento', viewValue: 'Em tratamento' },
+    { value: 'Concluido', viewValue: 'Concluido' },
+  ];
 
   constructor(
     public router: Router,
@@ -33,22 +38,17 @@ export class EditarComponent implements OnInit {
   ngOnInit(): void {
     this.ContabilizarApiService.getLancamentoById(this.id).subscribe(data => {
       this.lancamento = data;
-      this.lancamento.DataEfetiva = this.formatarDataService.convertToDateStr(data.DataEfetiva);
-      this.lancamento.UltimoStatus = this.formatarDataService.convertToDate(data.UltimoStatus);
-      this.debito = this.convertToNumber(this.lancamento.Debito);
-      this.credito = this.convertToNumber(this.lancamento.Credito);
+      this.lancamento.dataEfetiva = new Date(data.dataEfetiva);
+      this.lancamento.ultimoStatus = new Date(data.ultimoStatus);
+      this.debito = this.convertToNumber(this.lancamento.debito);
+      this.credito = this.convertToNumber(this.lancamento.credito);
     });    
   }
-  // Definindo os possíveis valores de status
-  status: Status[] = [
-    { value: 'Pendente', viewValue: 'Pendente' },
-    { value: 'Em tratamento', viewValue: 'Em tratamento' },
-    { value: 'Concluido', viewValue: 'Concluido' },
-  ];
+
   // Método para chamar a API e atualizar o lançamento
   chamarApi() {
-    const formattedDate = this.formatarDataService.formatDateToCustomString(this.lancamento.UltimoStatus);
-    this.ContabilizarApiService.updateLancamento(this.id, this.lancamento.Status, formattedDate)
+    const dataEfetivaISO = this.lancamento.ultimoStatus.toISOString();
+    this.ContabilizarApiService.updateLancamento(this.id, this.lancamento.status, dataEfetivaISO)
       .subscribe(
         response => {
           this.snackBar.open('Atualizado com sucesso', 'Fechar', {

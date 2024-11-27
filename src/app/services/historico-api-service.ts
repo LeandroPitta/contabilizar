@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HistoricoApiService {
 
-  private baseUrl: string = 'http://localhost:3000/api-contabilizar/historico/';
+  private baseUrl: string = 'http://localhost:8080/api/historico';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,9 +18,9 @@ export class HistoricoApiService {
 
   insertHistorico(id: number, historico: string, funcionario: string): Observable<any> {
     const data = {
-      ID: id,
-      HISTORICO: historico,
-      FUNCIONARIO: funcionario
+      id: id,
+      historico: historico,
+      funcionario: funcionario
     };
     return this.httpClient.post<any>(this.baseUrl, data);
   }

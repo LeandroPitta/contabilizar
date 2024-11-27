@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ContabilizarApiService {
 
-  private baseUrl: string = 'http://localhost:3000/api-contabilizar/principal/';
+  private baseUrl: string = 'http://localhost:8080/api/contabilizar';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,8 +23,8 @@ export class ContabilizarApiService {
   updateLancamento(id: number, status: string, ultimoStatus: string): Observable<any> {
     const url = `${this.baseUrl}/${id}`;
     const data = {
-      Status: status,
-      UltimoStatus: ultimoStatus
+      status: status,
+      ultimoStatus: ultimoStatus
     };
     return this.httpClient.put<any>(url, data);
   }

@@ -1,38 +1,38 @@
 <div class="card">
     <!-- Configuração da tabela -->
     <p-table #dt [value]="lancamentos" [loading]="loading" [(selection)]="selectedRow" dataKey="id"
-        [globalFilterFields]="['DataEfetiva','Debito','Credito','Status','UltimoStatus']" [rows]="5"
+        [globalFilterFields]="['dataEfetiva','debito','credito','status','ultimoStatus']" [rows]="5"
         [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10, 50]" [paginator]="true"
         currentPageReportTemplate="{last} de {totalRecords} registros">
         <!-- Cabeçalho com opções de ordenação -->
         <ng-template pTemplate="header">
             <tr style="font-family: 'Futura BD BT', Arial, sans-serif;">
-                <th pSortableColumn="DataEfetiva">Data Efetiva <p-sortIcon field="DataEfetiva"></p-sortIcon></th>
-                <th pSortableColumn="Debito">Débito <p-sortIcon field="Debito"></p-sortIcon></th>
-                <th pSortableColumn="Credito">Crédito <p-sortIcon field="Credito"></p-sortIcon></th>
-                <th pSortableColumn="Status">Status <p-sortIcon field="Status"></p-sortIcon></th>
-                <th pSortableColumn="UltimoStatus">Último Status <p-sortIcon field="UltimoStatus"></p-sortIcon></th>
+                <th pSortableColumn="dataEfetiva">Data Efetiva <p-sortIcon field="dataEfetiva"></p-sortIcon></th>
+                <th pSortableColumn="debito">Débito <p-sortIcon field="debito"></p-sortIcon></th>
+                <th pSortableColumn="credito">Crédito <p-sortIcon field="credito"></p-sortIcon></th>
+                <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+                <th pSortableColumn="ultimoStatus">Último Status <p-sortIcon field="ultimoStatus"></p-sortIcon></th>
                 <th><button title="Exportar para Excel" class="excel-button" (click)="exportToXlsx()"><i class="fa fa-file-excel-o"></i></button></th>
             </tr>
             <tr>
-                <th><p-columnFilter type="text" field="DataEfetiva" matchMode="contains"></p-columnFilter></th>
-                <th><p-columnFilter type="text" field="Debito" matchMode="contains"></p-columnFilter></th>
-                <th><p-columnFilter type="text" field="Credito" matchMode="contains"></p-columnFilter></th>
-                <th><p-columnFilter type="text" field="Status" matchMode="contains"></p-columnFilter></th>
-                <th><p-columnFilter type="text" field="UltimoStatus" matchMode="contains"></p-columnFilter></th>
+                <th><p-columnFilter type="text" field="dataEfetiva" matchMode="contains"></p-columnFilter></th>
+                <th><p-columnFilter type="text" field="debito" matchMode="contains"></p-columnFilter></th>
+                <th><p-columnFilter type="text" field="credito" matchMode="contains"></p-columnFilter></th>
+                <th><p-columnFilter type="text" field="status" matchMode="contains"></p-columnFilter></th>
+                <th><p-columnFilter type="text" field="ultimoStatus" matchMode="contains"></p-columnFilter></th>
                 <th></th>
             </tr>
         </ng-template>
         <!-- Corpo da tabela -->
         <ng-template pTemplate="body" let-rowData>
             <tr style="font-family: 'Futura BK BT', Arial, sans-serif;">
-                <td>{{ rowData.DataEfetiva | date:'dd/MM/yyyy':'UTC' }}</td>
-                <td>{{ rowData.Debito | currency:'BRL' }}</td>
-                <td>{{ rowData.Credito | currency:'BRL' }}</td>
-                <td>{{ rowData.Status }}</td>
-                <td>{{ rowData.UltimoStatus | date:'dd/MM/yyyy':'UTC' }}</td>
+                <td>{{ rowData.dataEfetiva | date:'dd/MM/yyyy':'UTC' }}</td>
+                <td>{{ rowData.debito | currency:'BRL' }}</td>
+                <td>{{ rowData.credito | currency:'BRL' }}</td>
+                <td>{{ rowData.status }}</td>
+                <td>{{ rowData.ultimoStatus | date:'dd/MM/yyyy':'UTC' }}</td>
                 <td>
-                    <button pButton pRipple type="button" icon="pi pi-pencil" (click)="editar(rowData.ID)" class="p-button-rounded p-button-warning p-button-text" title="Editar"></button>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" (click)="editar(rowData.id)" class="p-button-rounded p-button-warning p-button-text" title="Editar"></button>
                 </td>
             </tr>
         </ng-template>
