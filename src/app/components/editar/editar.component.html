@@ -3,7 +3,7 @@
         <!-- Campo de Data Efetiva - está desativado para edição -->
         <mat-form-field appearance="outline" id="DataEfetiva">
             <mat-label>Data Efetiva</mat-label>
-            <input matInput type="text" [(ngModel)]="lancamento.dataEfetiva" name="DataEfetiva" disabled="true">
+            <input matInput type="text" [value]="lancamento.dataEfetiva | date:'dd/MM/yyyy'" name="DataEfetiva" disabled="true">
         </mat-form-field>
         <!-- Campo de Débito com formatação de moeda - está desativado para edição -->
         <mat-form-field appearance="outline" id="Debito">

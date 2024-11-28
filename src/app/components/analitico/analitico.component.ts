@@ -28,8 +28,8 @@ export class AnaliticoComponent implements OnInit {
     this.ContabilizarApiService.getLancamentos().subscribe(data => {
       this.lancamentos = data.map(lancamento => ({
         ...lancamento,
-        dataEfetiva: lancamento.dataEfetiva,
-        ultimoStatus: lancamento.ultimoStatus,
+        dataEfetiva: new Date(lancamento.dataEfetiva),
+        ultimoStatus: new Date(lancamento.ultimoStatus),
         debito: this.convertToNumber(lancamento.debito),
         credito: this.convertToNumber(lancamento.credito)
       }));
