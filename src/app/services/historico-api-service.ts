@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HistoricoApiService {
 
-  private baseUrl: string = 'http://localhost:8080/api/historico';
+  private baseUrl: string = 'https://api-contabilizar.leandropitta.com.br/api/historico';
 
   constructor(private httpClient: HttpClient) { }
 
