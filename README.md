@@ -16,7 +16,11 @@ The frontend is developed using Angular, which provides a robust and scalable fr
 
 ## Backend API
 
-The application communicates with a backend API to fetch and update data. The backend API is assumed to be hosted separately and provides endpoints for managing data related to the application.
+The backend API for this project is hosted separately. You can find the backend API repository at [contabilizar-api-java](https://github.com/LeandroPitta/contabilizar-api-java).
+
+## Production Environment
+
+The application runs in production at [contabilizar.leandropitta.com.br](https://contabilizar.leandropitta.com.br).
 
 ## Tech Stack
 
